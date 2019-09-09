@@ -32,6 +32,14 @@ class ProductPage(BasePage):
     def should_be_message_name(self):
         assert self.is_element_present(*ProductPageLocators.NAME_MESSAGE), "Name in message is not presented"
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.NAME_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def is_disappear_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.NAME_MESSAGE), \
+            "Success message is not disappeared"
+
     def get_showed_name(self):
         return self.browser.find_element(*ProductPageLocators.NAME_SHOWED).text
 
