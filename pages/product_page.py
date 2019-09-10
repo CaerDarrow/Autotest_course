@@ -61,3 +61,11 @@ class ProductPage(BasePage):
     def check_equal_name(self, message_name):
         name = self.get_showed_name()
         assert message_name == name, 'Wrong name in message'
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.NAME_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def should_disappear_message(self):
+        assert self.is_disappeared(*ProductPageLocators.NAME_MESSAGE), \
+            "Success message not disappear"
